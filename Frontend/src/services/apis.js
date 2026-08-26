@@ -1,4 +1,6 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/api/v1"
+const BASE_URL =
+  process.env.REACT_APP_BASE_URL ||
+  "https://edufy-backend-4s74.onrender.com";
 
 // AUTH ENDPOINTS  (all mounted under /user in the Edufy backend, not /auth)
 export const endpoints = {
