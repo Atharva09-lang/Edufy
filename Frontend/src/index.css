@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { background: #F8FCFF; scroll-behavior: auto; }
+  body { min-width: 320px; color: #334155; background: #F8FCFF; }
+  * { border-color: rgba(148,163,184,.18); }
+  ::selection { background: rgba(34,211,238,.26); color: #0F172A; }
+}
+
+@layer components {
+  .app-surface {
+  background:
+    radial-gradient(900px 520px at 8% -8%, rgba(34, 211, 238, 0.18), transparent 60%),
+    radial-gradient(760px 500px at 95% 10%, rgba(167, 139, 250, 0.16), transparent 62%),
+    linear-gradient(135deg, #EAF7FF 0%, #F7FBFF 48%, #F2EEFF 100%);
+}
+
+.glass {
+  @apply border border-white/70 shadow-soft backdrop-blur-[22px];
+  background-color: rgba(255, 255, 255, 0.62);
+  border-color: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 16px 45px -24px rgba(15, 23, 42, 0.24);
+}
+  .glass-card { @apply glass rounded-[22px]; }
+  .premium-input { @apply w-full rounded-xl border border-slate-200/80 px-4 py-3 text-slate-700 outline-none transition duration-200 placeholder:text-slate-400 focus:border-cyan-400 focus:bg-white focus:ring-4 focus:ring-cyan-100/70; background-color: rgba(255,255,255,.65); }
+  .premium-button { @apply inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-400 to-sky-500 px-5 py-3 font-semibold text-slate-900 shadow-[0_10px_28px_-10px_rgba(14,165,233,.72)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_14px_32px_-10px_rgba(14,165,233,.8)] active:scale-[.98]; }
+}

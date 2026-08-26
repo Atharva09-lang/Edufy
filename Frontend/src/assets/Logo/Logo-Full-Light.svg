@@ -1,0 +1,11 @@
+<svg width="400" height="80" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Edufy">
+  <defs>
+    <linearGradient id="iconGradLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#534AB7"/>
+      <stop offset="100%" stop-color="#1D9E75"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="8" width="64" height="64" rx="16" fill="url(#iconGradLight)"/>
+  <text x="32" y="53" font-family="'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">E</text>
+  <text x="80" y="55" font-family="'Helvetica Neue', Arial, sans-serif" font-size="46" font-weight="800" fill="#ffffff" letter-spacing="-1">edufy</text>
+</svg>
