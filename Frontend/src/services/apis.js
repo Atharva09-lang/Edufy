@@ -1,5 +1,5 @@
 const BASE_URL =
-  "https://edufy-backend-4s74.onrender.com";
+   "https://edufy-backend-4s74.onrender.com/api/v1";
 
 // AUTH ENDPOINTS  (all mounted under /user in the Edufy backend, not /auth)
 export const endpoints = {
