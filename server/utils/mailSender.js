@@ -5,11 +5,9 @@ const sendEmail = async (email, title, body) => {
     const response = await axios.post(
       "https://api.elasticemail.com/v4/emails/transactional",
       {
-        Recipients: [
-          {
-            Email: email
-          }
-        ],
+        Recipients: {
+          To: [email]
+        },
         Content: {
           Body: [
             {
