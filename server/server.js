@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: "https://edufy-flax.vercel.app/", // frontend origin
+        origin: ["http://localhost:3000", "https://edufy-flax.vercel.app/"], // frontend origin
         credentials: true, // allow cookies to be sent with requests
     })
 );
