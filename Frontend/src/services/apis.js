@@ -1,5 +1,4 @@
-const BASE_URL =
-  "https://edufy-backend-4s74.onrender.com/api/v1";
+const BASE_URL = "https://edufy-qqy3.vercel.app/api/v1";
 
 // AUTH ENDPOINTS
 export const endpoints = {
