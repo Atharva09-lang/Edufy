@@ -1,36 +1,28 @@
-const axios = require("axios");
+const nodemailer = require("nodemailer");
 
 const sendEmail = async (email, title, body) => {
   try {
-    const response = await axios.post(
-      "https://api.elasticemail.com/v4/emails/transactional",
-      {
-        Recipients: {
-          To: [email]
-        },
-        Content: {
-          Body: [
-            {
-              ContentType: "HTML",
-              Content: body
-            }
-          ],
-          Subject: title,
-          From: process.env.MAIL_USER
-        }
+    const transporter = nodemailer.createTransport({
+      host: process.env.MAIL_HOST,
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
-      {
-        headers: {
-          "X-ElasticEmail-ApiKey": process.env.ELASTIC_EMAIL_API_KEY,
-          "Content-Type": "application/json"
-        }
-      }
-    );
+    });
 
-    console.log("Email sent successfully");
-    return response.data;
+    const info = await transporter.sendMail({
+      from: `"Edufy" <${process.env.MAIL_USER}>`,
+      to: email,
+      subject: title,
+      html: body,
+    });
+
+    console.log("Email sent successfully:", info.messageId);
+    return info;
   } catch (err) {
-    console.log("Error sending email:", err.response?.data || err.message);
+    console.log("Error sending email:", err.message);
     throw err;
   }
 };
