@@ -35,8 +35,7 @@ app.use(cookieParser());
 app.use(
     cors({
         origin: ["http://localhost:3000", 
-            "https://edufy-flax.vercel.app",
-         "https://edufy-sepia-psi.vercel.app"], // frontend origin
+           "https://edufy-pied.vercel.app"], // frontend origin
         credentials: true, // allow cookies to be sent with requests
     })
 );
