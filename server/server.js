@@ -60,6 +60,10 @@ app.get('/', (req, res) => {
     res.send("welcome to my server EDUFY");
 });
 
-app.listen(port, () => {
-    console.log(`server is running on port ${port}`);
-});
+if (process.env.VERCEL !== "1") {
+  app.listen(port, () => {
+      console.log(`server is running on port ${port}`);
+  });
+}
+
+module.exports = app;
