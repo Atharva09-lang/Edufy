@@ -33,6 +33,31 @@ body {
   background-color: #8B5CF6;
 }
 
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #0EA5E9 #0F172A;
+  overscroll-behavior: contain;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #0EA5E9;
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #38BDF8;
+}
+
 /* Hide default styling of details/summary */
 details>summary {
   list-style: none;
