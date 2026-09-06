@@ -7,12 +7,13 @@ const { AI_CHAT_API } = aiEndpoints
 export const askAI = async (message, mode, context, token) => {
   let result = null
   try {
+    const headers = token ? { Authorization: `Bearer ${token}` } : {}
     const response = await apiConnector("POST", AI_CHAT_API,
       { message, mode, context },
-      { Authorization: `Bearer ${token}` }
+      headers
     )
     if (!response?.data?.success) {
-      throw new Error("AI request failed")
+      throw new Error(response?.data?.message || "AI request failed")
     }
     result = response.data.reply
   } catch (error) {

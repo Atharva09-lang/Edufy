@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const { chatWithAI } = require("../controllers/AI");
-const { auth } = require("../middleware/auth");
 
-router.post("/chat", auth, chatWithAI);
+// Public endpoint for Ask AI / Course Advisor / AI Doubt Solver
+router.post("/chat", chatWithAI);
 
 module.exports = router;

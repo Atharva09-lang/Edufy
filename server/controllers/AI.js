@@ -46,7 +46,7 @@ Instructions:
         let completion;
         try {
             completion = await groq.chat.completions.create({
-                model: "llama-3.3-70b-versatile",
+                model: "openai/gpt-oss-120b",
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message },
@@ -55,9 +55,9 @@ Instructions:
                 max_tokens: 1024,
             });
         } catch (modelErr) {
-            console.warn("Falling back to llama-3.1-8b-instant:", modelErr?.message);
+            console.warn("Falling back to openai/gpt-oss-20b:", modelErr?.message);
             completion = await groq.chat.completions.create({
-                model: "llama-3.1-8b-instant",
+                model: "openai/gpt-oss-20b",
                 messages: [
                     { role: "system", content: systemPrompt },
                     { role: "user", content: message },
