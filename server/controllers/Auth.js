@@ -24,7 +24,6 @@ exports.sendOTP = async (req, res) => {
             lowerCaseAlphabets: false,
             specialChars: false
         });
-        console.log("OTP generated", otp);
 
         let existingOTP = await OTP.findOne({ otp });
         while (existingOTP) {
@@ -37,13 +36,11 @@ exports.sendOTP = async (req, res) => {
         }
 
         const otpPayload = { email, otp };
-        const otpBody = await OTP.create(otpPayload);
-        console.log("OTP body", otpBody);
+        await OTP.create(otpPayload);
 
         return res.status(200).json({
             success: true,
-            message: 'OTP sent successfully',
-            otp
+            message: 'OTP sent successfully'
         });
     } catch (error) {
         console.error("Error sending OTP:", error);
@@ -79,6 +76,13 @@ exports.signUp = async (req, res) => {
             });
         }
 
+        if (accountType !== "Student" && accountType !== "Instructor") {
+            return res.status(403).json({
+                success: false,
+                message: "Invalid account type"
+            });
+        }
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({
@@ -108,14 +112,13 @@ exports.signUp = async (req, res) => {
             gender: null,
             dateOfBirth: null,
             aboutMe: null,
-            contactNumber: null
+            contactNumber: contactNumber || null
         });
 
         const user = await User.create({
             firstName,
             lastName,
             email,
-            contactNumber,
             password: hashedPassword,
             accountType,
             additionalDetails: profileDetails._id,
@@ -153,7 +156,7 @@ exports.login = async (req, res) => {
         if (!user) {
             return res.status(401).json({
                 success: false,
-                message: "User not found, please sign up first"
+                message: "Invalid email or password"
             });
         }
 
@@ -185,7 +188,7 @@ exports.login = async (req, res) => {
         } else {
             return res.status(401).json({
                 success: false,
-                message: "Password is incorrect"
+                message: "Invalid email or password"
             });
         }
     } catch (err) {

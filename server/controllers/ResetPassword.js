@@ -21,7 +21,7 @@ exports.resetPasswordToken = async (req, res) => {
             { email },
             {
                 token,
-                resetPasswordExpires: Date.now() + 5 * 60 * 1000
+                resetPasswordExpire: Date.now() + 5 * 60 * 1000
             },
             { new: true }
         );
@@ -35,6 +35,7 @@ exports.resetPasswordToken = async (req, res) => {
             message: "Email sent successfully, please check your mail"
         });
     } catch (err) {
+        console.log(err);
         return res.status(500).json({
             success: false,
             message: "Failed to send the email"
@@ -62,7 +63,7 @@ exports.resetPassword = async (req, res) => {
             });
         }
 
-        if (userDetails.resetPasswordExpires < Date.now()) {
+        if (userDetails.resetPasswordExpire < Date.now()) {
             return res.status(400).json({
                 success: false,
                 message: "Token has expired, please regenerate a new one"
@@ -82,6 +83,7 @@ exports.resetPassword = async (req, res) => {
             message: "Password reset successfully"
         });
     } catch (err) {
+        console.log(err);
         return res.status(500).json({
             success: false,
             message: "Password could not be reset"
